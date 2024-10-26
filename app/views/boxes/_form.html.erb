@@ -1,0 +1,46 @@
+<%= form_with model: @box do |form| %>
+  <fieldset>
+    <%= form.label :number, "Nummer" %>
+    <%= form.text_field :number %>
+    <% @box.errors.full_messages_for(:number).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :room, "Rum" %>
+    <%= form.select :room, Box.rooms, selected: box.room || 'Välj rum...' %>
+    <% @box.errors.full_messages_for(:room).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <% @box.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :description, "Innehåll" %>
+    <%= form.text_area :description, size: "70x10" %>
+    <% @box.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </fieldset>
+
+  <div>
+    <%= form.submit "Spara kartong" %>
+  </div>
+
+  <% if defined?(edit) && edit %>
+    <p>
+      <%= link_to "Ta bort", box_path(@box), data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?"
+                        } %>
+    </p>
+  <% end %>
+<% end %>

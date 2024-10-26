@@ -21,6 +21,27 @@ class BoxesController < ApplicationController
     end
   end
 
+  def edit
+    @box = Box.find(params[:id])
+  end
+
+  def update
+    @box = Box.find(params[:id])
+
+    if @box.update(box_params)
+      redirect_to boxes_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @box = Box.find(params[:id])
+    @box.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   private
 
   def box_params

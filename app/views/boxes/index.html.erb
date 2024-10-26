@@ -1,11 +1,37 @@
-<h1>Boxes</h1>
-
-<ul>
-  <% @boxes.each do |box| %>
-    <li>
-      <a href="<%= box_path(box) %>">
-        <%= box.title %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<p>
+  Totalt <strong><%= @boxes.count %></strong> kartonger
+</p>
+<table class="striped">
+  <thead>
+    <tr>
+      <th scope="col">Nummer</th>
+      <th scope="col">Rum</th>
+      <th scope="col">Titel</th>
+      <th scope="col">Innehåll</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @boxes.each do |box| %>
+      <tr>
+        <th scope="row">
+          <%= link_to "Kartong #{box.number}", box_path(box) %>
+        </th>
+        <td><%= box.room %></td>
+        <td><%= box.title %></td>
+        <td>
+          <%= box.truncated_description %>
+        </td>
+        <td>
+          <%= link_to "✏️", edit_box_path(box) %>
+        </td>
+        <td>
+          <%= link_to "🗑️", box_path(box), data: {
+                              turbo_method: :delete,
+                              turbo_confirm: "Are you sure?"
+                            } %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

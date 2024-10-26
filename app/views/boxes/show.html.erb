@@ -1,9 +1,29 @@
-<h1><%= @box.title %></h1>
+<table>
+  <tbody>
+    <tr>
+      <td scope="col">Rum</th>
+      <td scope="row" width="90%"><%= @box.room %></th>
+    </tr>
+    <tr>
+      <th scope="col">Nummer</th>
+      <th scope="row"><%= @box.number %></th>
+    </tr>
+    <tr>
+      <th scope="col">Titel</th>
+      <th scope="row"><%= @box.title %></th>
+    </tr>
+    <tr>
+      <th scope="col">Innehåll</th>
+      <th scope="row"><%= @box.description %></th>
+    </tr>
+  </tbody>
+</table>
 
-<a href="/">Back</a>
-
-<ul>
-  <li><%= @box.number %></li>
-  <li><%= @box.room %></li>
-  <li><%= @box.description %></li>
-</ul>
+<p>
+  <%= link_to "Ändra", edit_box_path(@box) %>
+  eller
+  <%= link_to "Ta bort", box_path(@box), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %>
+</p>
