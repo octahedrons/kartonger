@@ -1,0 +1,11 @@
+<h1>Boxes</h1>
+
+<ul>
+  <% @boxes.each do |box| %>
+    <li>
+      <a href="<%= box_path(box) %>">
+        <%= box.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>
