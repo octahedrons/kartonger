@@ -16,9 +16,6 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-# Bootstrap Ruby Gem
-# https://github.com/twbs/bootstrap-rubygem/blob/main/README.md
-gem "bootstrap"
 # https://github.com/rails/dartsass-rails
 gem "dartsass-rails"
 
