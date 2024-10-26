@@ -1,20 +1,22 @@
 <table>
   <tbody>
     <tr>
-      <td scope="col">Rum</th>
-      <td scope="row" width="90%"><%= @box.room %></th>
-    </tr>
-    <tr>
       <th scope="col">Nummer</th>
       <th scope="row"><%= @box.number %></th>
+    </tr>
+    <tr>
+      <td scope="col">Rum</th>
+      <td scope="row" width="90%"><%= @box.room %></th>
     </tr>
     <tr>
       <th scope="col">Titel</th>
       <th scope="row"><%= @box.title %></th>
     </tr>
     <tr>
-      <th scope="col">Innehåll</th>
-      <th scope="row"><%= @box.description %></th>
+      <th scope="col" vertical-align="top">Innehåll</th>
+      <th scope="row">
+        <pre><%= @box.description %></pre>
+      </th>
     </tr>
   </tbody>
 </table>

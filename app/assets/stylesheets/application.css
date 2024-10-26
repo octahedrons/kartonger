@@ -8,3 +8,7 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+table tbody th {
+  vertical-align: top !important;
+}
