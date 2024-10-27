@@ -2,7 +2,7 @@ app = "kartonger"
 primary_region = "arn"
 
 [env]
-  PORT = "8080"
+  PORT = "3000"
   RACK_ENV = "production"
   RUBYOPT = "-W:deprecated"
 
