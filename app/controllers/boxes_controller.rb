@@ -1,6 +1,6 @@
 class BoxesController < ApplicationController
   def index
-    @boxes = Box.all
+    @boxes = Box.order(number: :desc).all
   end
 
   def show
