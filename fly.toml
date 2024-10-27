@@ -2,7 +2,7 @@ app = "kartonger"
 primary_region = "arn"
 
 [env]
-  PORT = "3000"
+  PORT = "8080"
   RACK_ENV = "production"
   RUBYOPT = "-W:deprecated"
 
@@ -11,7 +11,7 @@ primary_region = "arn"
   destination = "/storage"
 
 [[services]]
-  internal_port = 3000
+  internal_port = 8080
   protocol = "tcp"
 
   [[services.ports]]
