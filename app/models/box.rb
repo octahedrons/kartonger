@@ -1,14 +1,16 @@
 class Box < ApplicationRecord
   def self.rooms
     %w[
-      Hall
-      Kök
-      Vardagsrum
-      Sovrum
       Badrum
-      Klädkammare
       Balkong
+      Gästrum
+      Hall
+      Klädkammare
+      Kontor
       Källare
+      Kök
+      Sovrum
+      Vardagsrum
       Vind
     ]
   end
