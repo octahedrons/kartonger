@@ -6,4 +6,8 @@ module ApplicationHelper
   def current_user
     session[:current_user]
   end
+
+  def favicon
+    "📦"
+  end
 end
