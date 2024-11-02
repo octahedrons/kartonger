@@ -1,7 +1,7 @@
 <%= form_with model: @box do |form| %>
   <fieldset>
     <%= form.label :number, "Nummer" %>
-    <%= form.text_field :number %>
+    <%= form.number_field :number %>
     <% @box.errors.full_messages_for(:number).each do |message| %>
       <div><%= message %></div>
     <% end %>
