@@ -23,7 +23,8 @@
 
 <p>
   <%= link_to "Ändra", edit_box_path(@box) %>
-  eller
+</p>
+<p>
   <%= link_to "Ta bort", box_path(@box), data: {
                       turbo_method: :delete,
                       turbo_confirm: "Are you sure?"
