@@ -15,7 +15,7 @@
   <tbody>
     <% @boxes.each do |box| %>
       <tr>
-        <th scope="row">
+        <th scope="row" style="white-space: nowrap">
           <%= link_to "Kartong #{box.number}", box_path(box) %>
         </th>
         <td><%= box.room %></td>
