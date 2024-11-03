@@ -1,7 +1,7 @@
 <%= form_with model: @box do |form| %>
   <fieldset>
     <%= form.label :number, "Nummer" %>
-    <%= form.number_field :number %>
+    <%= form.number_field :number, pattern: "[0-9]*", value: @next_number || box.number %>
     <% @box.errors.full_messages_for(:number).each do |message| %>
       <div><%= message %></div>
     <% end %>
