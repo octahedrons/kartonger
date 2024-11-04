@@ -9,6 +9,6 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
-table tbody th {
+table tbody th, td {
   vertical-align: top !important;
 }
