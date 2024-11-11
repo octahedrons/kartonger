@@ -20,7 +20,7 @@ class Box < ApplicationRecord
   end
 
   def truncated_description
-    if description.size > 50
+    if description&.size.to_i > 50
       "#{description[..50]}..."
     else
       description

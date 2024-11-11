@@ -10,6 +10,12 @@ class BoxesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "view boxes without values" do
+    Box.create
+    get boxes_url
+    assert_response :success
+  end
+
   test "create the first box" do
     Box.destroy_all
     get new_box_url
