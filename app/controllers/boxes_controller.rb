@@ -9,7 +9,7 @@ class BoxesController < ApplicationController
 
   def new
     @box = Box.new
-    @next_number = Box.order(number: :desc).select(:number).first.number + 1
+    @next_number = Box.next_number
   end
 
   def create
