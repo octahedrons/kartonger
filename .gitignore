@@ -32,3 +32,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore development credentials
+/config/credentials/development.key
+/config/credentials/development.yml.enc
