@@ -1,6 +1,15 @@
 class BoxesController < ApplicationController
   def index
     @boxes = Box.order(number: :desc).all
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = ["boxes_", Time.now.utc.to_fs(:iso8601), ".csv"].join
+        headers["content-disposition"] = "attachment; filename=#{filename}"
+        render csv: @boxes
+      end
+    end
   end
 
   def show

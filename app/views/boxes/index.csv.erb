@@ -1,0 +1,4 @@
+<%= Box.csv_header -%>
+<% @boxes.each do |box| %>
+<%= box.to_csv -%>
+<% end %>

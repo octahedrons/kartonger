@@ -1,5 +1,7 @@
 <p>
   Totalt <strong><%= @boxes.count %></strong> kartonger
+  •
+  <%= link_to "Ladda hem CSV export", boxes_url(format: :csv) %>
 </p>
 <table class="striped">
   <thead>

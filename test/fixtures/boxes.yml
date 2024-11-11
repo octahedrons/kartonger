@@ -2,12 +2,12 @@
 
 one:
   number: 1
-  room: MyString
-  title: MyString
-  description: MyText
+  room: Kitchen
+  title: Knifes
+  description: So many knifes
 
 two:
   number: 2
-  room: MyString
-  title: MyString
-  description: MyText
+  room: Office
+  title: Printer parts
+  description: PC LOAD LETTER

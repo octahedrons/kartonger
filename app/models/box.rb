@@ -15,6 +15,10 @@ class Box < ApplicationRecord
     ]
   end
 
+  def self.csv_header
+    column_names.to_csv
+  end
+
   def self.next_number
     order(number: :desc).pick(:number).to_i + 1
   end
@@ -25,5 +29,9 @@ class Box < ApplicationRecord
     else
       description
     end
+  end
+
+  def to_csv
+    Box.column_names.flat_map { values_at _1 }.to_csv
   end
 end
