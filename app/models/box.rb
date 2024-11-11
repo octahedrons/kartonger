@@ -24,8 +24,9 @@ class Box < ApplicationRecord
   end
 
   def truncated_description
-    if description&.size.to_i > 50
-      "#{description[..50]}..."
+    max_size = 46
+    if description&.size.to_i > max_size
+      "#{description[..max_size]} ..."
     else
       description
     end
