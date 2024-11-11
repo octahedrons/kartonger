@@ -8,17 +8,17 @@
   </fieldset>
 
   <fieldset>
-    <%= form.label :room, "Rum" %>
-    <%= form.select :room, Box.rooms, selected: box.room || 'Välj rum...' %>
-    <% @box.errors.full_messages_for(:room).each do |message| %>
+    <%= form.label :title, "Titel" %>
+    <%= form.text_field :title %>
+    <% @box.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </fieldset>
 
   <fieldset>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-    <% @box.errors.full_messages_for(:title).each do |message| %>
+    <%= form.label :room, "Rum" %>
+    <%= form.select :room, Box.rooms, selected: box.room || 'Välj rum...' %>
+    <% @box.errors.full_messages_for(:room).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </fieldset>
