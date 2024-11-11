@@ -21,6 +21,7 @@ class BoxesControllerTest < ActionDispatch::IntegrationTest
     travel_to(test_time) do
       get boxes_url format: :csv
       assert_response :success
+      assert_match /Cheese & Crackers/, @response.body
       assert_match /PC LOAD LETTER/, @response.body
       assert_no_match /^\n*$/, @response.body # no blank lines
       assert_equal "text/csv", @response.media_type

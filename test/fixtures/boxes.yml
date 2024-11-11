@@ -3,8 +3,12 @@
 one:
   number: 1
   room: Kitchen
-  title: Knifes
-  description: So many knifes
+  title: Food
+  description: |
+    Pizza
+    Beer
+    Whisky
+    Cheese & Crackers
 
 two:
   number: 2
