@@ -23,7 +23,11 @@
         <td><%= box.room %></td>
         <td><%= box.title %></td>
         <td>
-          <%= box.truncated_description %>
+          <details>
+            <summary><%= box.truncated_description %></summary>
+            <pre><%= box.description %></pre>
+          </details>
+
         </td>
         <td>
           <%= link_to "✏️", edit_box_path(box) %>
