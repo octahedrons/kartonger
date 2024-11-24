@@ -38,7 +38,7 @@ class BoxesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create box" do
-    post boxes_url, params: { box: { number: 3, room: Box.rooms.sample, packed_by: "packer",  } }
+    post boxes_url, params: { box: { number: 3, room: Box.rooms.sample, packed_by: "packer" } }
     assert_response :redirect
     assert_equal "packer", Box.find_by(number: 3).packed_by
   end
