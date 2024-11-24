@@ -55,6 +55,6 @@ class BoxesController < ApplicationController
   private
 
   def box_params
-    params.require(:box).permit(:number, :room, :title, :description)
+    params.require(:box).permit(:number, :room, :title, :description, :packed_by)
   end
 end

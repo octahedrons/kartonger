@@ -38,7 +38,14 @@ class BoxesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create box" do
-    get new_box_url
-    assert_response :success
+    post boxes_url, params: { box: { number: 3, room: Box.rooms.sample, packed_by: "packer",  } }
+    assert_response :redirect
+    assert_equal "packer", Box.find_by(number: 3).packed_by
+  end
+
+  test "create box without selecting room" do
+    post boxes_url, params: { box: { number: 3, room: "Välj...", packed_by: "packer" } }
+    assert_response :unprocessable_content
+    assert_nil Box.find_by(number: 3)
   end
 end

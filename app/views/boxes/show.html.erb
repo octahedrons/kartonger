@@ -13,6 +13,14 @@
       <th scope="row"><%= @box.title %></th>
     </tr>
     <tr>
+      <th scope="col" style="white-space: nowrap">Packad av</th>
+      <th scope="row"><%= @box.packed_by %></th>
+    </tr>
+    <tr>
+      <th scope="col">Skapad</th>
+      <th scope="row"><%= @box.created_at %></th>
+    </tr>
+    <tr>
       <th scope="col" vertical-align="top">Innehåll</th>
       <th scope="row">
         <pre><%= @box.description %></pre>

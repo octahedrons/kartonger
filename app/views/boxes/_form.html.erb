@@ -8,6 +8,14 @@
   </fieldset>
 
   <fieldset>
+    <%= form.label :packed_by, "Packad av" %>
+    <%= form.select :packed_by, ["-"] + potential_packers, selected: box.packed_by || "-" %>
+    <% @box.errors.full_messages_for(:packed_by).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
     <%= form.label :title, "Titel" %>
     <%= form.text_field :title %>
     <% @box.errors.full_messages_for(:title).each do |message| %>
@@ -17,7 +25,7 @@
 
   <fieldset>
     <%= form.label :room, "Rum" %>
-    <%= form.select :room, Box.rooms, selected: box.room || 'Välj rum...' %>
+    <%= form.select :room, Box.rooms + ["Välj..."], selected: box.room || "Välj..." %>
     <% @box.errors.full_messages_for(:room).each do |message| %>
       <div><%= message %></div>
     <% end %>

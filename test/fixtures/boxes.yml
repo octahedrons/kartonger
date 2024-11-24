@@ -4,6 +4,7 @@ one:
   number: 1
   room: Kitchen
   title: Food
+  packed_by: John
   description: |
     Pizza
     Beer
@@ -14,4 +15,5 @@ two:
   number: 2
   room: Office
   title: Printer parts
+  packed_by: Jane
   description: PC LOAD LETTER

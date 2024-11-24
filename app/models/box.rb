@@ -1,4 +1,6 @@
 class Box < ApplicationRecord
+  validates :room, comparison: { other_than: "Välj..." }
+
   def self.rooms
     %w[
       Badrum
@@ -13,6 +15,10 @@ class Box < ApplicationRecord
       Vardagsrum
       Vind
     ]
+  end
+
+  def self.room_options
+    ["Välj..."] + rooms
   end
 
   def self.csv_header
