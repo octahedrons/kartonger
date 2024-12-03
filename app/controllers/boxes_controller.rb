@@ -10,7 +10,7 @@ class BoxesController < ApplicationController
         render csv: @boxes
       end
       format.db do
-        database_path = File.join(Rails.root, ActiveRecord::Base.connection_db_config.database)
+        database_path = ActiveRecord::Base.connection_db_config.database
         filename = filename = ["boxes_", Box.count, "_", Time.now.utc.to_fs(:iso8601), ".sqlite3"].join
         type = Mime::Type.lookup_by_extension(:db).to_s
 
