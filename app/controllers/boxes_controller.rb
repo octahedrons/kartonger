@@ -9,6 +9,13 @@ class BoxesController < ApplicationController
         headers["content-disposition"] = "attachment; filename=#{filename}"
         render csv: @boxes
       end
+      format.db do
+        database_path = File.join(Rails.root, ActiveRecord::Base.connection_db_config.database)
+        filename = filename = ["boxes_", Box.count, "_", Time.now.utc.to_fs(:iso8601), ".sqlite3"].join
+        type = Mime::Type.lookup_by_extension(:db).to_s
+
+        send_file(database_path, filename:, type:)
+      end
     end
   end
 

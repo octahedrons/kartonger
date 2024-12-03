@@ -2,6 +2,8 @@
   Totalt <strong><%= @boxes.count %></strong> kartonger
   •
   <%= link_to "Ladda hem CSV export", boxes_url(format: :csv) %>
+  •
+  <%= link_to "Ladda hem databasen", boxes_url(format: :db) %>
 </p>
 <table class="striped">
   <thead>

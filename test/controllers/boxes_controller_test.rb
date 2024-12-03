@@ -31,6 +31,25 @@ class BoxesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "export database" do
+    test_time = Time.utc(2024, 11, 11, 23, 7, 1)
+    travel_to(test_time) do
+      get boxes_url format: :db
+      assert_response :success
+      assert_equal "application/vnd.sqlite3", @response.media_type
+      # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#as_a_response_header_for_the_main_body
+      # When both filename and filename* are present in a single header field
+      # value, filename* is preferred over filename when both are understood.
+      # It's recommended to include both for maximum compatibility, and you can
+      # convert filename* to filename by substituting non-ASCII characters with
+      # ASCII equivalents (such as converting é to e).
+      assert_equal \
+        "attachment; filename=\"boxes_2_2024-11-11T23%3A07%3A01Z.sqlite3\"; " \
+        "filename*=UTF-8''boxes_2_2024-11-11T23%3A07%3A01Z.sqlite3",
+        @response.headers["content-disposition"]
+    end
+  end
+
   test "create the first box" do
     Box.destroy_all
     get new_box_url
