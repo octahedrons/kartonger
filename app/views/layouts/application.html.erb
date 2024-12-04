@@ -40,14 +40,14 @@
       <h1>
         <%= link_to "Kartonger", root_path %>
       </h1>
-      <p>
-        <% if logged_in? %>
-          Inloggad som <strong><%= current_user %></strong> <small>📦</small>
-          Lägg till en <%= link_to "ny kartong", new_box_path %> <small>📦</small>
-          <%= link_to "Logga ut", logout_path, data: { turbo_method: :delete } %>
-        <% end %>
-      </p>
     </hgroup>
+    <p>
+      <% if logged_in? %>
+        <%= link_to "Lägg till en ny kartong", new_box_path %> <small>📦</small>
+        Inloggad som <strong><%= current_user %></strong> <small>📦</small>
+        <%= link_to "Logga ut", logout_path, data: { turbo_method: :delete } %>
+      <% end %>
+    </p>
 
     <%= yield %>
 
