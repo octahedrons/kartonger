@@ -6,12 +6,20 @@
   <%= link_to "Ladda hem databasen", boxes_url(format: :db), data: { turbo: false } %>
 </p>
 <table class="striped">
+  <colgroup>
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+    <col style="width: 90%;">
+    <col style="width: 1%;">
+    <col style="width: 1%;">
+  </colgroup>
   <thead>
     <tr>
       <th scope="col">Nummer</th>
       <th scope="col">Rum</th>
-      <th scope="col">Titel</th>
-      <th scope="col">Innehåll</th>
+      <th scope="col">
+        <%= link_to "Innehåll", "javascript:void(0)", data: { action: "details#toggleOpen" } %>
+      </th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
@@ -23,11 +31,12 @@
           <%= link_to "Kartong #{box.number}", box_path(box) %>
         </th>
         <td><%= box.room %></td>
-        <td><%= box.title %></td>
         <td>
           <details>
-            <summary><%= box.truncated_description %></summary>
-            <pre><%= box.description %></pre>
+            <summary>
+              <strong><%= box.title %></strong>
+            </summary>
+            <pre style="white-space: pre-wrap"><%= box.description %></pre>
           </details>
 
         </td>
