@@ -1,6 +1,6 @@
-# Boxes 📦️
+# Boxes
 
-Ruby on Rails application to keep track of boxes during a move.
+Ruby on Rails application to keep track of boxes during a move. 📦️
 
 ## Getting started
 
