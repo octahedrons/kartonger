@@ -29,6 +29,10 @@ class Box < ApplicationRecord
     order(number: :desc).pick(:number).to_i + 1
   end
 
+  def self.count_by(packer:)
+    Box.where(packed_by: packer).count
+  end
+
   def truncated_description
     max_size = 32
     if description&.size.to_i > max_size

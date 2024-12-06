@@ -1,9 +1,11 @@
 <p>
   Totalt <strong><%= @boxes.count %></strong> kartonger
   •
-  <%= link_to "Ladda hem CSV export", boxes_url(format: :csv) %>
-  •
-  <%= link_to "Ladda hem databasen", boxes_url(format: :db), data: { turbo: false } %>
+  <% potential_packers.each_with_index do |packer, idx| %>
+    <%= packer %>
+      <%= Box.count_by(packer:) %>
+      <small>📦</small>
+  <% end %>
 </p>
 <table class="striped">
   <colgroup>
