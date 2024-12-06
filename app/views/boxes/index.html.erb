@@ -29,6 +29,12 @@
       <tr>
         <th scope="row" style="white-space: nowrap">
           <%= link_to "Kartong #{box.number}", box_path(box) %>
+          <br>
+          <small>
+            <small>
+              <%= box.packed_by %>
+            </small>
+          </small>
         </th>
         <td><%= box.room %></td>
         <td>
