@@ -1,11 +1,21 @@
 <p>
   Totalt <strong><%= @boxes.count %></strong> kartonger
   •
-  <% potential_packers.each_with_index do |packer, idx| %>
+  <% potential_packers.each do |packer| %>
     <%= packer %>
-      <%= Box.count_by(packer:) %>
+      <%= Box.count_by(:packed_by, packer) %>
       <small>📦</small>
   <% end %>
+  <br>
+  <small class="pico-color-zinc-500">
+    <% @count_by_room.each_with_index do |(room, count), idx| %>
+      <%= "#{room}:" %>
+        <%= count %>
+        <% unless idx + 1 == Box.rooms.size %>
+          ✧
+        <% end %>
+    <% end %>
+  </small>
 </p>
 <table class="striped">
   <colgroup>

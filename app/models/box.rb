@@ -29,8 +29,8 @@ class Box < ApplicationRecord
     order(number: :desc).pick(:number).to_i + 1
   end
 
-  def self.count_by(packer:)
-    Box.where(packed_by: packer).count
+  def self.count_by(key, value)
+    Box.where(key => value).count
   end
 
   def truncated_description
