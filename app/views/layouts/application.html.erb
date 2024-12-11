@@ -41,6 +41,9 @@
       <h1>
         <%= link_to "Kartonger", root_path %>
       </h1>
+      <% if Rails.env.development? %>
+        <p>DEVELOPMENT</p>
+      <% end %>
     </hgroup>
     <p>
       <% if logged_in? %>
