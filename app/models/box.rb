@@ -40,7 +40,7 @@ class Box < ApplicationRecord
   end
 
   def unpack_action
-    Action.find_by(box: self)
+    Action.find_by(name: Action.unpack, box: self)
   end
 
   def unpacked?
