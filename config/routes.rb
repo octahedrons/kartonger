@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root "boxes#index"
 
-  resources :boxes
+  resources :actions, only: [:index]
+  resources :boxes do
+    resources :actions, only: [:create, :destroy]
+  end
+
   get "/login", to: "logins#new"
   post "/login", to: "logins#create"
   delete "/logout", to: "logins#destroy"
