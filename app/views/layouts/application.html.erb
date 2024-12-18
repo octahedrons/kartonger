@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="turbo-refresh-scroll" content="preserve">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,9 +17,9 @@
     <link rel="icon" type="image/png" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;<%= favicon %>&lt;/text&gt;&lt;/svg&gt;">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :pico %>
     <%= stylesheet_link_tag "pico.colors" %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -51,6 +52,8 @@
         <%= link_to "CSV", boxes_url(format: :csv) %>
         •
         <%= link_to "SQL", boxes_url(format: :db), data: { turbo: false } %>
+        •
+        <%= link_to "Händelser", actions_url %>
         <small>📦</small>
         <%= link_to "Logga ut #{current_user}", logout_path, data: { turbo_method: :delete } %>
         <small>📦</small>

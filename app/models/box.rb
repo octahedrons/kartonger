@@ -1,4 +1,6 @@
 class Box < ApplicationRecord
+  has_many :actions, dependent: :delete_all
+
   validates :room, comparison: { other_than: "Välj..." }
 
   def self.rooms
@@ -31,6 +33,18 @@ class Box < ApplicationRecord
 
   def self.count_by(key, value)
     Box.where(key => value).count
+  end
+
+  def unpack(user: "")
+    Action.create(name: Action.unpack, box: self, user:)
+  end
+
+  def unpack_action
+    Action.find_by(box: self)
+  end
+
+  def unpacked?
+    Action.where(name: Action.unpack, box: self).any?
   end
 
   def truncated_description

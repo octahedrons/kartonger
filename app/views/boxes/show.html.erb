@@ -31,10 +31,18 @@
 
 <p>
   <%= link_to "Ändra", edit_box_path(@box) %>
-</p>
-<p>
+  •
   <%= link_to "Ta bort", box_path(@box), data: {
                       turbo_method: :delete,
                       turbo_confirm: "Are you sure?"
                     } %>
 </p>
+
+<p>
+  Händelser
+</p>
+<ul>
+  <% @box.actions.each do |action| %>
+    <li><%= "#{action.in_swedish} av #{action.user} #{action.created_at}" %></li>
+  <% end %>
+</ul>

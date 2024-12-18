@@ -19,6 +19,7 @@
 </p>
 <table class="striped">
   <colgroup>
+    <col style="width: 1%;">
     <col style="width: 10%;">
     <col style="width: 10%;">
     <col style="width: 90%;">
@@ -27,6 +28,9 @@
   </colgroup>
   <thead>
     <tr>
+      <th scope="col">
+        <span title="Uppackad?">☑️</span>
+      </th>
       <th scope="col">Nummer</th>
       <th scope="col">Rum</th>
       <th scope="col">
@@ -39,6 +43,33 @@
   <tbody>
     <% @boxes.each do |box| %>
       <tr>
+        <td data-selector="box-action">
+          <% if box.unpacked? %>
+            <%= form_with(url: box_action_path(box.id, box.unpack_action), method: :delete) do |form| %>
+              <%= form.checkbox "box-action-#{box.id}",
+                                checked: true,
+                                include_hidden: false,
+                                onchange: "this.form.requestSubmit()",
+                                data: {
+                                  turbo_method: :delete,
+                                }
+              %>
+            <% end %>
+        <% else %>
+            <%= form_with(url: box_actions_path(box.id)) do |form| %>
+              <%= form.hidden_field :action_name, value: "unpack" %>
+              <%= form.hidden_field :user, value: current_user %>
+              <%= form.checkbox "box-action-#{box.id}",
+                                checked: false,
+                                include_hidden: false,
+                                onchange: "this.form.requestSubmit()",
+                                data: {
+                                  turbo_method: :post,
+                                }
+              %>
+            <% end %>
+        <% end %>
+        </td>
         <th scope="row" style="white-space: nowrap">
           <%= link_to "Kartong #{box.number}", box_path(box) %>
           <br>

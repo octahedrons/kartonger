@@ -12,3 +12,16 @@
 table tbody th, td {
   vertical-align: top !important;
 }
+
+/*
+ * Turbo Drive automatically toggles the aria-busy attribute
+ * https://turbo.hotwired.dev/handbook/drive#displaying-progress
+ * https://turbo.hotwired.dev/reference/attributes
+ *
+ * PicoCSS has built-in styling for it: https://picocss.com/docs/loading
+ *
+ * Have the spinner take the place of the checkbox and avoid things jumping around
+*/
+td[data-selector=box-action] form[aria-busy=true] input[type=checkbox] {
+  display: none;
+}
