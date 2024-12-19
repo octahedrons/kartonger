@@ -1,6 +1,6 @@
 class ActionsController < ApplicationController
   def index
-    @actions = Action.all
+    @actions = Action.order(created_at: :desc)
   end
 
   def create
