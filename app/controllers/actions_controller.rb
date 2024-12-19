@@ -7,7 +7,7 @@ class ActionsController < ApplicationController
     @action = Action.new(create_params)
 
     if @action.save
-      redirect_to root_path
+      redirect_to root_path, status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
