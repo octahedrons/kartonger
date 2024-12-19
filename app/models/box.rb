@@ -40,11 +40,11 @@ class Box < ApplicationRecord
   end
 
   def unpack_action
-    Action.find_by(name: Action.unpack, box: self)
+    actions.find { |action| action.name == Action.unpack }
   end
 
   def unpacked?
-    Action.where(name: Action.unpack, box: self).any?
+    actions.any? { |action| action.name == Action.unpack }
   end
 
   def truncated_description

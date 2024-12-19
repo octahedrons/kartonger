@@ -1,6 +1,6 @@
 class BoxesController < ApplicationController
   def index
-    @boxes = Box.order(number: :desc).all
+    @boxes = Box.preload(:actions).order(number: :desc)
     @count_by_room = Box.group(:room).count.sort_by { _2 }.reverse.to_h
 
     respond_to do |format|
