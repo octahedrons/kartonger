@@ -77,6 +77,8 @@ jobs:
 
       - name: Run tests
         env:
+          FERRUM_DEFAULT_TIMEOUT: 60
+          FERRUM_PROCESS_TIMEOUT: 60
           RAILS_ENV: test
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
