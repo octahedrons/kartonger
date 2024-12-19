@@ -1,12 +1,7 @@
 class BoxesController < ApplicationController
   def index
     @boxes = Box.order(number: :desc).all
-    @count_by_room = Box
-      .rooms
-      .each_with_object({}) { |room, hsh| hsh[room] = Box.count_by(:room, room) }
-      .sort_by { _2 }
-      .reverse
-      .to_h
+    @count_by_room = Box.group(:room).count.sort_by { _2 }.reverse.to_h
 
     respond_to do |format|
       format.html
