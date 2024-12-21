@@ -128,6 +128,7 @@ GEM
       activesupport (>= 5.0.0)
     json (2.7.4)
     language_server-protocol (3.17.0.3)
+    local_time (3.0.2)
     logger (1.6.4)
     loofah (2.23.1)
       crass (~> 1.0.2)
@@ -314,6 +315,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  local_time
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
