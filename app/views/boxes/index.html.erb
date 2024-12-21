@@ -11,7 +11,7 @@
     <% @count_by_room.each_with_index do |(room, count), idx| %>
       <%= "#{room}:" %>
         <%= count %>
-        <% unless idx + 1 == Box.rooms.size %>
+        <% unless idx + 1 == @count_by_room.size %>
           ✧
         <% end %>
     <% end %>
