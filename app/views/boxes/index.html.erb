@@ -6,6 +6,7 @@
       <%= Box.count_by(:packed_by, packer) %>
       <small>📦</small>
   <% end %>
+  <mark><%= @unpack_count %> uppackade</mark>
   <br>
   <small class="pico-color-zinc-500">
     <% @count_by_room.each_with_index do |(room, count), idx| %>
