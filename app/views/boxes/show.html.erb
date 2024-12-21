@@ -43,6 +43,9 @@
 </p>
 <ul>
   <% @box.actions.each do |action| %>
-    <li><%= "#{action.in_swedish} av #{action.user} #{action.created_at}" %></li>
+    <li>
+      <%= "#{action.in_swedish.capitalize} av #{action.user.capitalize}" %>
+      <%= local_time_ago(action.created_at) %>
+    </li>
   <% end %>
 </ul>

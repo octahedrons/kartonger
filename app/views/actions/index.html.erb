@@ -3,7 +3,10 @@
   <li>
     <%= link_to "Kartong #{action.box.number}", box_url(action.box.id) %>
     <code><%= action.box.title %></code>
-    <%= "#{action.in_swedish} av #{action.user} #{action.created_at}" %>
+    <%= "#{action.in_swedish} av #{action.user.capitalize}" %>
+    <small style="color: var(--pico-muted-color);">
+      <%= local_time_ago(action.created_at) %>
+    </small>
   </li>
 <% end %>
 </ul>
