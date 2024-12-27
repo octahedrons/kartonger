@@ -1,12 +1,13 @@
 <p>
   Totalt <strong><%= @boxes.count %></strong> kartonger
   •
-  <% potential_packers.each do |packer| %>
+  <% potential_packers.each_with_index do |packer, idx| %>
     <%= packer %>
-      <%= Box.count_by(:packed_by, packer) %>
-      <small>📦</small>
+    <%= Box.count_by(:packed_by, packer) %>
+    📦
   <% end %>
-  <mark><%= @unpack_count %> uppackade</mark>
+  •
+  <%= link_to "#{@unpack_count} uppackade", actions_url %>
   <br>
   <small class="pico-color-zinc-500">
     <% @count_by_room.each_with_index do |(room, count), idx| %>
