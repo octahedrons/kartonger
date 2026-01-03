@@ -36,3 +36,6 @@
 # Ignore development credentials
 /config/credentials/development.key
 /config/credentials/development.yml.enc
+
+# macOS 💩
+.DS_Store
