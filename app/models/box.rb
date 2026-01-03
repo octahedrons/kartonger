@@ -15,6 +15,7 @@ class Box < ApplicationRecord
       Källare
       Kök
       Sovrum
+      Täby
       Vardagsrum
       Vind
     ]
