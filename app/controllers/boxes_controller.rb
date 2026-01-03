@@ -22,7 +22,7 @@ class BoxesController < ApplicationController
   end
 
   def show
-    @box = Box.find(params[:id])
+    @box = Box.includes(:box_files).find(params[:id])
   end
 
   def new
@@ -31,9 +31,10 @@ class BoxesController < ApplicationController
   end
 
   def create
-    @box = Box.new(box_params)
+    @box = Box.new(box_params.except(:files))
 
     if @box.save
+      attach_files
       redirect_to boxes_path
     else
       render :new, status: :unprocessable_entity
@@ -41,13 +42,14 @@ class BoxesController < ApplicationController
   end
 
   def edit
-    @box = Box.find(params[:id])
+    @box = Box.includes(:box_files).find(params[:id])
   end
 
   def update
     @box = Box.find(params[:id])
 
-    if @box.update(box_params)
+    if @box.update(box_params.except(:files))
+      attach_files
       redirect_to boxes_path
     else
       render :edit, status: :unprocessable_entity
@@ -64,6 +66,20 @@ class BoxesController < ApplicationController
   private
 
   def box_params
-    params.require(:box).permit(:number, :room, :title, :description, :packed_by)
+    params.require(:box).permit(:number, :room, :title, :description, :packed_by, files: [])
+  end
+
+  def attach_files
+    return unless params[:box][:files]
+
+    params[:box][:files].each do |file|
+      next if file.blank?
+
+      @box.box_files.create!(
+        filename: file.original_filename,
+        content_type: file.content_type,
+        data: file.read
+      )
+    end
   end
 end

@@ -67,4 +67,19 @@ class BoxesControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_content
     assert_nil Box.find_by(number: 3)
   end
+
+  test "create box with file attachment" do
+    file = fixture_file_upload("test.txt", "text/plain")
+
+    assert_difference(["Box.count", "BoxFile.count"]) do
+      post boxes_url, params: {
+        box: { number: 99, room: "Kök", packed_by: "packer", files: [file] }
+      }
+    end
+
+    assert_response :redirect
+    box = Box.find_by(number: 99)
+    assert box.box_files.any?
+    assert_equal "test.txt", box.box_files.first.filename
+  end
 end

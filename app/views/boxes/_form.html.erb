@@ -39,6 +39,24 @@
     <% end %>
   </fieldset>
 
+  <fieldset>
+    <%= form.label :files, "Filer" %>
+    <%= form.file_field :files, multiple: true %>
+  </fieldset>
+
+  <% if @box.box_files.any? %>
+    <fieldset>
+      <p>Bifogade filer:</p>
+      <% @box.box_files.each do |file| %>
+        <div>
+          <%= file.filename %> -
+          <%= link_to "Ta bort", box_box_file_path(@box, file),
+                      data: { turbo_method: :delete, turbo_confirm: "Ta bort #{file.filename}?" } %>
+        </div>
+      <% end %>
+    </fieldset>
+  <% end %>
+
   <div>
     <%= form.submit "Spara kartong" %>
   </div>

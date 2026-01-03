@@ -26,6 +26,30 @@
         <pre><%= @box.description %></pre>
       </th>
     </tr>
+    <% if @box.box_files.any? %>
+      <tr>
+        <th scope="col" style="vertical-align: top">Filer</th>
+        <td scope="row">
+          <% @box.box_files.each do |file| %>
+            <div style="margin-bottom: 1rem;">
+              <% if file.image? %>
+                <%= link_to box_box_file_path(@box, file), target: "_blank", data: { turbo: false } do %>
+                  <%= image_tag box_box_file_path(@box, file), alt: file.filename, style: "max-width: 150px; max-height: 150px;" %>
+                <% end %>
+              <% else %>
+                <%= link_to file.filename, box_box_file_path(@box, file), target: "_blank", data: { turbo: false } %>
+              <% end %>
+              <br>
+              <small>
+                <%= file.filename %> -
+                <%= local_time_ago(file.created_at) %> -
+                <%= link_to "Ladda ner", box_box_file_path(@box, file, download: true), data: { turbo: false } %>
+              </small>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
