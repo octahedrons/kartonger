@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_14_112156) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_03_195643) do
   create_table "actions", force: :cascade do |t|
     t.string "name"
     t.string "user"
@@ -18,6 +18,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_14_112156) do
     t.datetime "updated_at", null: false
     t.integer "box_id"
     t.index ["box_id"], name: "index_actions_on_box_id"
+  end
+
+  create_table "box_files", force: :cascade do |t|
+    t.integer "box_id", null: false
+    t.string "filename"
+    t.string "content_type"
+    t.binary "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_id"], name: "index_box_files_on_box_id"
   end
 
   create_table "boxes", force: :cascade do |t|
@@ -31,4 +41,5 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_14_112156) do
   end
 
   add_foreign_key "actions", "boxes"
+  add_foreign_key "box_files", "boxes"
 end

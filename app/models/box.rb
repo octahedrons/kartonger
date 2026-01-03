@@ -1,5 +1,6 @@
 class Box < ApplicationRecord
   has_many :actions, dependent: :delete_all
+  has_many :box_files, dependent: :destroy
 
   validates :room, comparison: { other_than: "Välj..." }
 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :actions, only: [:index]
   resources :boxes do
     resources :actions, only: [:create, :destroy]
+    resources :box_files, only: [:show, :destroy]
   end
 
   get "/login", to: "logins#new"
